@@ -2,7 +2,6 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from django.views.decorators.cache import cache_page
 
 from yatube.settings import POSTS_PER_PAGE
 
@@ -85,7 +84,8 @@ def post_view(request, username, post_id):
         'post': post,
         'comments': post.comments.all()
     }
-    # 'comments' нужно передать, только чтобы пройти тесты практикума, в шаблоне они не используются ¯\_(ツ)_/¯
+    # 'comments' нужно передать, только чтобы пройти тесты практикума,
+    # в шаблоне они не используются ¯\_(ツ)_/¯
     return render(request, 'posts/post.html', context)
 
 

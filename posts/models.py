@@ -1,5 +1,6 @@
+from typing import Optional
+
 from django.contrib.auth import get_user_model
-from django.core.exceptions import ValidationError
 from django.db import models
 
 from yatube.utils import wrap_text
@@ -177,6 +178,7 @@ class Follow(models.Model):
         verbose_name_plural = 'Подписки'
         unique_together = ('user', 'author')
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs) -> Optional:
         if self.author != self.user:
             return super().save(*args, **kwargs)
+        return None
