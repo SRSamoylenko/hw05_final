@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Профиль пользователя {{ person.username }}{% endblock %}
+{% block header %}Профиль пользователя @{{ person.username }}{% endblock %}
+{% block content %}
+    <main role="main" class="container">
+        <div class="row">
+            {% include 'widgets/profile_card.html' with person=person %}
+            <div class="col-md-9">
+                {% for post in page %}
+                    {% include 'widgets/post_item.html' with post=post %}
+                    {% if not forloop.last %}<hr>{% endif %}
+                {% endfor %}
+                {% include 'widgets/paginator.html' %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

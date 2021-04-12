@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Проcмотр записи{% endblock %}
+{% block header %}Проcмотр записи{% endblock %}
+{% block content %}
+    <main role="main" class="container">
+        <div class="row">
+            {% include 'widgets/profile_card.html' with person=post.author %}
+            <div class="col-md-9">
+                {% include 'widgets/post_item.html' with post=post %}
+                {% include 'widgets/comments.html' %}
+            </div>
+        </div>
+    </main>
+{% endblock %}
