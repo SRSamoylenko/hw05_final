@@ -3,8 +3,11 @@
 {% block header %}{{ group.title }}{% endblock %}
 {% block content %}
     <p>{{ group.description }}</p>
-    {% for post in page %}
-        {% include 'widgets/post_item.html' with post=post %}
-    {% endfor %}
+    {% load cache %}
+    {% cache 500 group_page request.user.username %}
+        {% for post in page %}
+            {% include 'widgets/post_item.html' with post=post %}
+        {% endfor %}
+    {% endcache %}
     {% include "widgets/paginator.html" %}
 {% endblock %}

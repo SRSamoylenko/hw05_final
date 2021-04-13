@@ -10,7 +10,6 @@ from .forms import CommentForm, PostForm
 from .models import Follow, Group, Post, User
 
 
-# @cache_page(20)
 def index(request: HttpRequest) -> HttpResponse:
     """Return all posts ordered by date of publication."""
     posts = Post.objects.all()
@@ -24,7 +23,6 @@ def index(request: HttpRequest) -> HttpResponse:
     return render(request, 'index.html', context)
 
 
-# @cache_page(20)
 def group_posts(request: HttpRequest, slug: str) -> HttpResponse:
     """Return all posts of a group specified by a slug."""
     group = get_object_or_404(Group, slug=slug)
@@ -82,10 +80,7 @@ def post_view(request, username, post_id):
     context = {
         'form': form,
         'post': post,
-        'comments': post.comments.all()
     }
-    # 'comments' нужно передать, только чтобы пройти тесты практикума,
-    # в шаблоне они не используются ¯\_(ツ)_/¯
     return render(request, 'posts/post.html', context)
 
 
@@ -106,9 +101,7 @@ def post_edit(request, username, post_id):
 
     context = {
         'form': form,
-        'post': post,
     }
-    # 'post' в шаблоне тоже не используется ¯\_(ツ)_/¯
     return render(request, 'posts/new_post.html', context)
 
 
@@ -126,7 +119,6 @@ def add_comment(request, username, post_id):
 
 
 @login_required
-# @cache_page(20)
 def follow_index(request):
     authors = request.user.follower.authors()
     posts = Post.objects.filter(author__in=authors)

@@ -5,10 +5,12 @@
     <div class="container">
         {% include "widgets/menu.html" with index=True %}
         {% load cache %}
+        {% cache 500 index_page request.user.username %}
             {% for post in page %}
                 {% include 'widgets/post_item.html' with post=post %}
                 {% if not forloop.last %}<hr>{% endif %}
             {% endfor %}
+        {% endcache %}
         {% include 'widgets/paginator.html' %}
     </div>
 {% endblock %}
