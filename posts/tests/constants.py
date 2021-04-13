@@ -143,6 +143,10 @@ FOLLOW_MODEL_FIELDS = {
         'verbose_name': 'Подписчик',
     }
 }
+FOLLOW_STR_OUTPUT = (
+    'Автор: {author}\n'
+    'Подписчик: {user}\n'
+)
 
 POST_FORM_FIELDS = {
     'text': forms.fields.CharField,

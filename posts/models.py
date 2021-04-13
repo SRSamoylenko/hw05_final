@@ -170,6 +170,7 @@ class Follow(models.Model):
         related_name='following',
         on_delete=models.CASCADE,
     )
+
     objects = FollowQuerySet.as_manager()
 
     class Meta:
@@ -177,6 +178,10 @@ class Follow(models.Model):
         verbose_name = 'Подписка'
         verbose_name_plural = 'Подписки'
         unique_together = ('user', 'author')
+
+    def __str__(self):
+        return (f'Автор: {self.author}\n'
+                f'Подписчик: {self.user}\n')
 
     def save(self, *args, **kwargs) -> Optional:
         if self.author != self.user:

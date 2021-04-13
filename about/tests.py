@@ -2,7 +2,6 @@ from django.test import Client, TestCase
 from django.urls import reverse
 
 TECH_PAGE_URL = reverse('about:tech')
-
 ABOUT_PAGE_URL = reverse('about:author')
 
 

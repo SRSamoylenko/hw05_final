@@ -21,10 +21,8 @@ User = get_user_model()
 class IndexGroupViewsTests(TestCase):
     @classmethod
     def tearDownClass(cls):
-        print('\nRemove test media root:', settings.MEDIA_ROOT)
         shutil.rmtree(settings.MEDIA_ROOT)
         super().tearDownClass()
-        print('Project media root restored:', settings.MEDIA_ROOT)
 
     def setUp(self):
         self.guest_client = Client()
@@ -143,10 +141,8 @@ class IndexGroupViewsTests(TestCase):
 class NewEditPostViewsTests(TestCase):
     @classmethod
     def tearDownClass(cls):
-        print('\nRemove test media root:', settings.MEDIA_ROOT)
         shutil.rmtree(settings.MEDIA_ROOT)
         super().tearDownClass()
-        print('Project media root restored:', settings.MEDIA_ROOT)
 
     def setUp(self):
         self.user = User.objects.create_user(username=_.TEST_USERNAME)
@@ -185,10 +181,8 @@ class NewEditPostViewsTests(TestCase):
 class ProfilePostViewsTests(TestCase):
     @classmethod
     def tearDownClass(cls):
-        print('\nRemove test media root:', settings.MEDIA_ROOT)
         shutil.rmtree(settings.MEDIA_ROOT)
         super().tearDownClass()
-        print('Project media root restored:', settings.MEDIA_ROOT)
 
     def setUp(self):
         self.user = User.objects.create_user(
@@ -271,10 +265,8 @@ class ProfilePostViewsTests(TestCase):
 class PaginatorViewsTests(TestCase):
     @classmethod
     def tearDownClass(cls):
-        print('\nRemove test media root:', settings.MEDIA_ROOT)
         shutil.rmtree(settings.MEDIA_ROOT)
         super().tearDownClass()
-        print('Project media root restored:', settings.MEDIA_ROOT)
 
     def setUp(self):
         self.user = User.objects.create(

@@ -18,10 +18,8 @@ User = get_user_model()
 class PostFormTests(TestCase):
     @classmethod
     def tearDownClass(cls):
-        print('\nRemove test media root:', settings.MEDIA_ROOT)
         shutil.rmtree(settings.MEDIA_ROOT)
         super().tearDownClass()
-        print('Project media root restored:', settings.MEDIA_ROOT)
 
     def setUp(self):
         self.authorized_client = Client()

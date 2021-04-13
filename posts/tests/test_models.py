@@ -99,3 +99,17 @@ class FollowModelTest(TestCase):
                             Follow._meta.get_field(field).__dict__[option],
                             expected_value
                         )
+
+    def test_object_name(self):
+        """Проверяет правильность вывода метода __str__."""
+        author = User.objects.create(username=_.TEST_USERNAME)
+        user = User.objects.create(username=_.SECOND_TEST_USERNAME)
+        follow = Follow.objects.create(
+            author=author,
+            user=user,
+        )
+        expected_output = _.FOLLOW_STR_OUTPUT.format(
+            author=author,
+            user=user,
+        )
+        self.assertEqual(str(follow), expected_output)
