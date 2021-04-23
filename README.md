@@ -6,8 +6,8 @@
 1. Проверьте установлен ли интерпретатор Python.
 2. Клонируйте репозиторий и перейдите в папку проекта, для этого в консоли наберите:
     ```
-    git clone https://github.com/SRSamoylenko/django_forms_testing
-    cd django_forms_testing
+    git clone https://github.com/SRSamoylenko/hw05_final
+    cd hw05_final
     ```
 3. Создайте и активируйте виртуальное окружение:
     ```
