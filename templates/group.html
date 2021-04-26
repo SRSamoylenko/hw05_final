@@ -4,7 +4,7 @@
 {% block content %}
     <p>{{ group.description }}</p>
     {% load cache %}
-    {% cache 500 group_page request.user.username %}
+    {% cache 20 group_page request.user.username page.number %}
         {% for post in page %}
             {% include 'widgets/post_item.html' with post=post %}
         {% endfor %}

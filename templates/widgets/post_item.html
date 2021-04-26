@@ -17,9 +17,12 @@
 
         <!-- Если пост относится к какому-нибудь сообществу, то отобразим ссылку на него через # -->
         {% if post.group %}
-            <a class="card-link muted" href="{% url 'posts:group' post.group.slug %}">
-                <strong class="d-block text-gray-dark">#{{ post.group.title }}</strong>
-            </a>
+            {% url 'posts:group' post.group.slug as group_url %}
+            {% if request.path != group_url %}
+                <a class="card-link muted" href="{% url 'posts:group' post.group.slug %}">
+                    <strong class="d-block text-gray-dark">#{{ post.group.title }}</strong>
+                </a>
+            {% endif %}
         {% endif %}
 
         <!-- Отображение ссылки на комментарии -->
@@ -30,9 +33,12 @@
                         Комментариев: {{ post.comments.count }}
                     </div>
                 {% endif %}
-                <a class="btn btn-sm btn-primary" href="{% url 'posts:post' post.author.username post.id %}" role="button">
-                    Добавить комментарий
-                </a>
+                {% url 'posts:post' post.author.username post.id as post_url %}
+                {% if request.path != post_url %}
+                    <a class="btn btn-sm btn-primary" href="{{ post_url }}" role="button">
+                        Добавить комментарий
+                    </a>
+                {% endif %}
 
                 <!-- Ссылка на редактирование поста для автора -->
                 {% if user == post.author %}

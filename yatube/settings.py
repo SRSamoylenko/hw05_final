@@ -1,8 +1,12 @@
 import os
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = '9prqyzdwsx9belc968s39-6h8=wvw^^*8@9+k3z@ngg4z+0$tt'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
 
@@ -11,6 +15,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '[::1]',
     'testserver',
+    '*',
 ]
 
 INSTALLED_APPS = [
@@ -113,4 +118,4 @@ EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
 
 POSTS_PER_PAGE = 10
 
-INTERNAL_IPS = ('127.0.0.1',)
+# INTERNAL_IPS = ('127.0.0.1',)

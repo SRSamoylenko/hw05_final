@@ -20,7 +20,7 @@
                     Записей: {{ person.posts.count }}
                 </div>
             </li>
-            {% if person != user %}}
+            {% if person != user %}
                 <li class="list-group-item">
                     {% if person in user.follower.authors %}
                         <a class="btn btn-lg btn-light" href="{% url 'posts:profile_unfollow' username=person.username %}" role="button">
