@@ -21,7 +21,11 @@ python 3, Django 2.2, SQLite, html, bootstrap, unittest
     ```
     pip install -r requirements.txt
     ```
-5. Для запуска приложения используйте:
+5. Выполните миграции:
+    ```
+    python manage.py migrate
+    ```
+7. Для запуска приложения используйте:
     ```
     python manage.py runserver
     ```
