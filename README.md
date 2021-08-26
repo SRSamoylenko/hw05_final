@@ -25,8 +25,12 @@ python 3, Django 2.2, SQLite, html, bootstrap, unittest
     ```
     python manage.py migrate
     ```
-7. Для запуска приложения используйте:
+6. Соберите статику
+    ```
+    python manage.py collectstatic
+    ```
+8. Для запуска приложения используйте:
     ```
     python manage.py runserver
     ```
-6. Приложение доступно по адресу: `http://127.0.0.1:8000/`.
+8. Приложение доступно по адресу: `http://127.0.0.1:8000/`.
